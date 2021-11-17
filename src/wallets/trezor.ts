@@ -2,7 +2,7 @@ import { BigNumber } from 'bignumber.js';
 import TrezorConnect from 'trezor-connect';
 import { CryptoAddress, Payment, Wallet } from '../types';
 
-const BTC_PATH = "m/49'/0'/0'";
+const BTC_PATH = "m/84'/0'/0'";
 const ETH_PATH = "m/44'/60'/0'/0/0";
 
 export class Trezor implements Wallet {
