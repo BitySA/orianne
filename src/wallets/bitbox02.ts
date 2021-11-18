@@ -1,8 +1,6 @@
 import { BigNumber } from 'bignumber.js';
 // @ts-ignore
-import { constants, BitBox02API, getDevicePath, getKeypathFromString }
-// @ts-ignore
-from 'bitbox02-api';
+import { constants, BitBox02API, getDevicePath, getKeypathFromString } from 'bitbox02-api';
 import { CryptoAddress, Payment, Wallet } from '../types';
 import { uint8ArrayToBase64, uint8ArrayToHex } from '../utils';
 

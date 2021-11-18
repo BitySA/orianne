@@ -4,7 +4,7 @@ import { Error, Networks, Wallet, Wallets } from '../src/types';
 import { Dummy } from '../src/wallets/dummy';
 
 test('cant use a non-existing wallet', (done) => {
-  fc.assert(fc.property(fc.string(), fc.string(), (network, wallet) => {
+  fc.assert(fc.property(fc.string(), fc.string(), (network: any, wallet: any) => {
     const orianne = new Orianne();
     orianne.useWallet(network, wallet)
     .then(() => {
@@ -18,7 +18,7 @@ test('cant use a non-existing wallet', (done) => {
 });
 
 test('a wallet of any network, name and type can be added', (done) => {
-  fc.assert(fc.property(fc.string(), fc.string(), (network, wallet) => {
+  fc.assert(fc.property(fc.string(), fc.string(), (network: any, wallet: any) => {
     const orianne = new Orianne();
     expect(orianne.addWallet([network], wallet, new Dummy())).toBe(undefined);
     orianne.useWallet(network, wallet)
@@ -31,7 +31,7 @@ test('a wallet of any network, name and type can be added', (done) => {
 });
 
 test('a wallet cant be overwritten', () => {
-  fc.assert(fc.property(fc.string(), fc.string(), (network, wallet) => {
+  fc.assert(fc.property(fc.string(), fc.string(), (network: any, wallet: any) => {
     const orianne = new Orianne();
     expect(orianne.addWallet([network], wallet, new Dummy())).toBe(undefined);
     expect(orianne.addWallet([network], wallet, new Dummy())).toBe(Error.WalletAlreadyExists);
@@ -40,7 +40,7 @@ test('a wallet cant be overwritten', () => {
 
 test('use wallets included with Orianne', () => {
   const orianne = new Orianne();
-  orianne.addDefaultWallets();
+  orianne.addDefaultWallets('', '');
   const wallets = orianne.networks.get(Networks.DUMMY);
   expect(wallets instanceof Map).toBe(true);
   expect(wallets!.get(Wallets.Dummy)
@@ -48,7 +48,7 @@ test('use wallets included with Orianne', () => {
 });
 
 test('make a payment with any wallet', (done) => {
-  fc.assert(fc.property(fc.string(), fc.string(), (network, wallet) => {
+  fc.assert(fc.property(fc.string(), fc.string(), (network: any, wallet: any) => {
     const orianne = new Orianne();
     orianne.addWallet([network], wallet, new Dummy());
     orianne.useWallet(network, wallet);
